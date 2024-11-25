@@ -7,7 +7,7 @@ public class ListaLigada {
 
     // Agregar nodo al principio
 
-    public void addatInicio(int dato){
+    public void addAtInicio(int dato){
         Nodo nuevoNodo = new Nodo(dato);
         if (this.size == 0) {
             // Escenario 1: Es el primer nodo que se crea
@@ -18,6 +18,7 @@ public class ListaLigada {
             nuevoNodo.setSiguiente(head);
             head = nuevoNodo;
         }
+        this.size++;
     }
 
     // Agregar nodo al final
@@ -44,23 +45,23 @@ public class ListaLigada {
         Nodo nuevoNodo = new Nodo(dato);
 
         if (pos == 0) { // Insertar al inicio
-            nuevoNodo.setSiguiente(head);
-            head = nuevoNodo;
+            nuevoNodo.setSiguiente(this.head);
+            this.head = nuevoNodo;
             if (size == 0) { // Si la lista estaba vacía
-                tail = nuevoNodo;
+                this.tail = nuevoNodo;
             }
         } else if (pos == size) { // Insertar al final
             tail.setSiguiente(nuevoNodo);
-            tail = nuevoNodo;
+            this.tail = nuevoNodo;
         } else { // Insertar en medio
             Nodo actual = head;
             for (int i = 0; i < pos - 1; i++) { // Encontrar el nodo anterior a la posición
-                actual = actual.getSiguiente();
+                this.actual = actual.getSiguiente();
             }
             nuevoNodo.setSiguiente(actual.getSiguiente());
             actual.setSiguiente(nuevoNodo);
         }
-        size++;
+        this.size++;
     }
 
     // Método de la profe para añadir en posición especifica
@@ -93,7 +94,7 @@ public class ListaLigada {
         if (pos < 0 || pos >= size) {
             throw new IndexOutOfBoundsException("Posición fuera del rango");
         }
-
+    
         if (pos == 0) { // Eliminar el primer nodo
             head = head.getSiguiente();
             if (size == 1) { // Si era el único nodo
@@ -109,7 +110,21 @@ public class ListaLigada {
                 tail = actual;
             }
         }
-        size--;
+        size--; // Actualizar el tamaño de la lista
+    }
+    
+
+
+    public void elimAtInicio() {
+
+        elimAt(0);
+
+    }
+
+    public void elimAtFinal() {
+        
+        elimAt( this.size - 1 );
+
     }
 
     public int sizeOfList() {
