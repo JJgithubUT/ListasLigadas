@@ -5,8 +5,23 @@ public class ListaLigada {
     private Nodo actual;
     private int size; // tamaño actual de la lista
 
+    // Agregar nodo al principio
+
+    public void addatInicio(int dato){
+        Nodo nuevoNodo = new Nodo(dato);
+        if (this.size == 0) {
+            // Escenario 1: Es el primer nodo que se crea
+            this.head = nuevoNodo;
+            this.tail = nuevoNodo;
+        } else {
+            // Escenario 2: No es el primer nodo, la lista ya tiene nodos
+            nuevoNodo.setSiguiente(head);
+            head = nuevoNodo;
+        }
+    }
+
     // Agregar nodo al final
-    public void add(int dato) {
+    public void addAtFinal(int dato) {
         Nodo nuevoNodo = new Nodo(dato);
         if (this.size == 0) {
             // Escenario 1: Es el primer nodo que se crea

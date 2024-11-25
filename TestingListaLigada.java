@@ -19,6 +19,7 @@ public class TestingListaLigada {
             System.out.println("3) Eliminar dato en una posición específica　デリと");
             System.out.println("4) Mostrar contenido de la lista　コンテナを見せます");
             System.out.println("5) Salir 出ます");
+            System.out.println("6) Agregar dato al inicio");
             
             entrada = br.readLine();
             opcion = Integer.parseInt(entrada);
@@ -29,7 +30,7 @@ public class TestingListaLigada {
                     System.out.println("Escribe el dato a almacenar en la lista:");
                     entrada = br.readLine();
                     dato = Integer.parseInt(entrada);
-                    lista.add(dato);
+                    lista.addAtFinal(dato);
                     System.out.println("Dato agregado al final de la lista.");
                     break;
 
@@ -75,7 +76,13 @@ public class TestingListaLigada {
                     // Opción para salir del programa
                     System.out.println("Saliendo del programa.");
                     break;
-
+                case 6:
+                    // Opción para añadir al principio
+                    System.out.println("Agregar dato a añadir al principio de la lista");
+                    entrada = br.readLine();
+                    dato = Integer.parseInt(entrada);
+                    lista.addatInicio(dato);
+                    break;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
             }
